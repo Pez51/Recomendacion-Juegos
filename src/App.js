@@ -51,14 +51,27 @@ function App() {
     }
   ]);
 
-  const handleSubmitPreferences = (preferences) => {
-    setUserPreferences(preferences);
+  const handleSubmitPreferences = async (preferences) => {
+    try {
+      const response = await fetch('http://localhost:3000/recomendar', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(preferences)
+      });
+  
+      const data = await response.json();
+      // data.recomendaciones debería ser un array con los IDs o títulos recomendados
+      const juegosRecomendados = allGames.filter(j =>
+        data.recomendaciones.includes(j.id)
+      );
+  
+      setUserPreferences({ ...preferences, recomendaciones: juegosRecomendados });
+    } catch (error) {
+      console.error('Error al conectarse con Flask:', error);
+    }
   };
 
   const getRecommendations = () => {
-    // Aquí implementarías la lógica de recomendación basada en las reglas CLIPS
-    // Esta es una implementación simplificada para demostración
-    
     if (!userPreferences) return [];
     
     return allGames.filter(game => {

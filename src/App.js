@@ -51,24 +51,8 @@ function App() {
     }
   ]);
 
-  const handleSubmitPreferences = async (preferences) => {
-    try {
-      const response = await fetch('http://localhost:3000/recomendar', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(preferences)
-      });
-  
-      const data = await response.json();
-      // data.recomendaciones debería ser un array con los IDs o títulos recomendados
-      const juegosRecomendados = allGames.filter(j =>
-        data.recomendaciones.includes(j.id)
-      );
-  
-      setUserPreferences({ ...preferences, recomendaciones: juegosRecomendados });
-    } catch (error) {
-      console.error('Error al conectarse con Flask:', error);
-    }
+  const handleSubmitPreferences = (preferences) => {
+    setUserPreferences(preferences);
   };
 
   const getRecommendations = () => {

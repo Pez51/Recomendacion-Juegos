@@ -35,7 +35,7 @@
 }
 
 .back-btn {
-  background-color:#EBCD1A;
+  background-color: hsla(194, 69%, 50%, 0.833);
   margin-bottom: 20px;
 }
 
@@ -47,8 +47,8 @@
 }
 
 .game-card {
-  background: #703059;
-  border: 1px solid #ddd;
+  background: hsla(194, 69%, 50%, 0.833);
+  border: 1px solid hsla(194, 69%, 50%, 0.833);
   border-radius: 8px;
   padding: 15px;
   box-shadow: 0 2px 4px rgba(244, 242, 148, 0.414);
@@ -56,10 +56,10 @@
 
 .game-card h3 {
   margin-top: 0;
-  color: #EBCD1A;
+  color: #ffffff;
 }
 
 .game-card p {
   margin: 5px 0;
-  color: #ece6e6;
+  color: #000000;
 }
